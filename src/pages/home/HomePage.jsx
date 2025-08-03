@@ -20,35 +20,7 @@ const HomePage = () => {
           </Container>
         </section>
 
-        <section id="services" className="home-page__section">
-          <Container>
-            <Services />
-          </Container>
-        </section>
 
-        <section id="skills" className="home-page__section">
-          <Container>
-            <Skills />
-          </Container>
-        </section>
-
-        <section id="portfolio" className="home-page__section">
-          <Container>
-            <Portfolio />
-          </Container>
-        </section>
-
-        <section id="projects" className="home-page__section">
-          <Container>
-            <Projects />
-          </Container>
-        </section>
-
-        <section id="faq" className="home-page__section">
-          <Container>
-            <FAQ />
-          </Container>
-        </section>
       </main>
     </div>
   );

@@ -10,7 +10,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  // Отслеживание скролла для изменения стиля хедера
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -38,59 +37,51 @@ const Header = () => {
   };
 
   return (
-    <header className={`header ${isScrolled ? 'header--scrolled' : ''}`}>
-      <Container>
-        <div className="header__inner">
-          <div className="header__logo">
-            <span className="header__logo-text">NKSV</span>
-          </div>
-
-          <nav className={`header__nav ${isMenuOpen ? 'header__nav--open' : ''}`}>
-            <ul className="header__nav-list">
-              {navigationItems.map((item) => (
-                <li key={item.id} className="header__nav-item">
-                  <button
-                    className="header__nav-link"
-                    onClick={() => handleNavClick(item.id)}
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="header__actions">
-            <button
-              className="header__theme-toggle"
-              onClick={toggleTheme}
-              aria-label="Переключить тему"
-            >
-              {theme === 'light' ? '🌙' : '☀️'}
-            </button>
-
-            <Button
-              variant="primary"
-              size="small"
-              onClick={() => handleNavClick('about')}
-              className="header__cta"
-            >
-              Связаться
-            </Button>
-
-            <button
-              className={`header__menu-toggle ${isMenuOpen ? 'header__menu-toggle--active' : ''}`}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Открыть меню"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
+    <div className="header-container">
+      <header className="header">
+        <div className="header__logo-container">
+          <img
+            src={theme === 'dark' ? '/src/shared/assets/svg/logo-dark.svg' : '/src/shared/assets/svg/logo-light.svg'}
+            alt="NKSV Logo"
+            className="header__logo"
+          />
         </div>
-      </Container>
-    </header>
+
+        <nav className="header__nav">
+          {/* Навигационные кнопки */}
+          <div className="header__nav-buttons">
+            {navigationItems.map((item) => (
+              <button
+                key={item.id}
+                className="header__nav-button"
+                onClick={() => handleNavClick(item.id)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Кнопка переключения темы */}
+          <button
+            className="header__theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Переключить тему"
+          >
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
+
+          {/* CTA кнопка */}
+          <Button
+            variant="primary"
+            size="medium"
+            onClick={handleContactClick}
+            className="header__cta"
+          >
+            Связаться
+          </Button>
+        </nav>
+      </header>
+    </div>
   );
 };
 
