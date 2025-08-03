@@ -1,0 +1,121 @@
+.skills {
+  padding: var(--spacing-3xl) 0;
+}
+
+.skills__header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.skills__title {
+  margin-bottom: var(--spacing-md);
+}
+
+.skills__subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+}
+
+.skills__categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+}
+
+.skills__category {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.skills__category-title {
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-accent);
+  text-align: center;
+}
+
+.skills__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.skills__item {
+  position: relative;
+}
+
+.skills__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.skills__skill-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.skills__skill-experience {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.skills__progress-bar {
+  height: 8px;
+  background-color: var(--color-bg-accent);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.skills__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent), #60a5fa);
+  border-radius: var(--radius-lg);
+  position: relative;
+  animation: progressAnimation 1.5s ease-out forwards;
+  transform-origin: left;
+  transform: scaleX(0);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--spacing-sm);
+}
+
+.skills__progress-text {
+  font-size: var(--font-size-xs);
+  color: white;
+  font-weight: var(--font-weight-semibold);
+}
+
+@keyframes progressAnimation {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Планшеты */
+@media (min-width: 768px) {
+  .skills__categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Десктопы */
+@media (min-width: 1024px) {
+  .skills__categories {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-3xl);
+  }
+
+  .skills__category {
+    padding: var(--spacing-3xl);
+  }
+}

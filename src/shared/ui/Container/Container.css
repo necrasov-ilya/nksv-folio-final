@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Размеры контейнеров */
+.container--small {
+  max-width: 640px;
+}
+
+.container--default {
+  max-width: 1200px;
+}
+
+.container--large {
+  max-width: 1440px;
+}
+
+.container--full {
+  max-width: none;
+  padding: 0;
+}
+
+/* Адаптивные отступы */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-xl);
+  }
+}

@@ -1,0 +1,97 @@
+/* Подключение шрифтов OpenRunde */
+@font-face {
+  font-family: 'OpenRunde';
+  src: url('../../public/fonts/OpenRunde-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenRunde';
+  src: url('../../public/fonts/OpenRunde-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenRunde';
+  src: url('../../public/fonts/OpenRunde-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenRunde';
+  src: url('../../public/fonts/OpenRunde-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Базовые стили для типографики */
+.typography-h1 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.typography-h2 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-2xl);
+  line-height: 1.3;
+  color: var(--color-text-primary);
+}
+
+.typography-h3 {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.typography-body {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.typography-caption {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Адаптивная типографика для планшетов */
+@media (min-width: 768px) {
+  .typography-h1 {
+    font-size: var(--font-size-4xl);
+  }
+
+  .typography-h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .typography-h3 {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* Адаптивная типографика для десктопа */
+@media (min-width: 1024px) {
+  :root {
+    --font-size-4xl: 3rem;    /* 48px */
+    --font-size-3xl: 2.5rem;  /* 40px */
+    --font-size-2xl: 2rem;    /* 32px */
+  }
+}
