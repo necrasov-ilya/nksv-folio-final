@@ -69,7 +69,7 @@ const Header = () => {
 
     return (
         <header className="header">
-            <Container>
+            <Container size="large">
                 <div className="header-content">
                     <div className="logo-section">
                         <img src={logo} alt="NKSV Logo" className="logo" draggable="false" decoding="async" />
