@@ -1,56 +1,61 @@
 import React from 'react';
 import Container from '../../shared/ui/Container/Container';
 import Button from '../../shared/ui/Button/Button';
-import { useTheme } from '../../app/providers/ThemeProvider';
-import portraitImg from './media/nksv-portrait.png';
-import telegramDark from '../../shared/assets/svg/social/telegram-logo-dark.svg';
-import telegramLight from '../../shared/assets/svg/social/telegram-logo-light.svg';
+import { useRevealOnScroll } from '../../shared/hooks/useRevealOnScroll';
+import portrait from './media/nksv-portrait.png';
 import './About.css';
 
 const About = () => {
-  const { theme } = useTheme();
-  const telegramIcon = theme === 'dark' ? telegramLight : telegramDark;
-  const tgUser = 'username_placeholder';
+  const ref = useRevealOnScroll();
 
   return (
-    <section className="about" id="about">
+    <section id="about" className="about" ref={ref} aria-label="Обо мне — превью секция">
       <Container size="large">
-        <div className="about__content">
-          <div className="about__text-section">
-            <div className="about__header">
-              <h1 className="about__title">
-                <span className="about__title-main">NKSV</span>
-              </h1>
-              <p className="about__description">
-                Помогаю бизнесам запускать и ускорять цифровые продукты — от идеи и дизайна интерфейса до корректной реализации и поддержки.
-                Работаю быстро, прозрачно и по делу.
-              </p>
+        <div className="about__inner">
+          <div className="about__content">
+            <span className="about__eyebrow js-reveal">Frontend engineer</span>
+            <h1 className="about__title js-reveal">
+            NKSV
+            </h1>
+            <p className="about__lead js-reveal">
+              Фокус на производительности, доступности и чистой архитектуре. Помогаю
+              бизнесу быстрее доставлять ценность пользователю — от идеи до
+              стабильного релиза.
+            </p>
+            <div className="about__actions js-reveal">
+              <Button as="a" href="#projects" variant="primary" size="medium">
+                Смотреть проекты
+              </Button>
+              <Button as="a" href="#portfolio" variant="secondary" size="medium">
+                Портфолио
+              </Button>
             </div>
-
-            <div className="about__cta">
-              <a href={`https://t.me/${tgUser}`} target="_blank" rel="noreferrer noopener" className="about__cta-button">
-                <img src={telegramIcon} alt="Telegram" className="about__telegram-icon" />
-                <span>Связаться в Telegram</span>
-              </a>
-              <Button variant="secondary" size="large" as="a" href="#portfolio">Смотреть портфолио</Button>
-            </div>
-
-            <div className="about__mini-toc" aria-label="Разделы страницы">
-              <ul>
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#skills">Навыки</a></li>
-                <li><a href="#portfolio">Кейсы</a></li>
-                <li><a href="#projects">Проекты</a></li>
-                <li><a href="#faq">Ответы</a></li>
-              </ul>
-            </div>
+            <ul className="about__highlights js-reveal" aria-label="Ключевые факты">
+              <li className="about__highlight">
+                <span className="about__highlight-value">5+ лет</span>
+                <span className="about__highlight-label">Опыт</span>
+              </li>
+              <li className="about__highlight">
+                <span className="about__highlight-value">20+ проектов</span>
+                <span className="about__highlight-label">Коммерческих</span>
+              </li>
+              <li className="about__highlight">
+                <span className="about__highlight-value">Core Web Vitals</span>
+                <span className="about__highlight-label">в «зеленой зоне»</span>
+              </li>
+            </ul>
           </div>
 
-          <div className="about__visual-section">
-            <div className="about__portrait-container">
-              <div className="about__portrait-main">
-                <img src={portraitImg} alt="Портрет Ильи Некрасова" className="about__portrait-img" />
-              </div>
+          <div className="about__media js-reveal" aria-hidden="true">
+            <div className="about__photo-wrap">
+              <img
+                src={portrait}
+                alt="Портрет Ильи Некрасова"
+                className="about__photo"
+                decoding="async"
+                loading="eager"
+                draggable="false"
+              />
             </div>
           </div>
         </div>

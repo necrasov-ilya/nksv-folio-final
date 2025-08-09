@@ -1,201 +1,106 @@
+/* About (Hero) */
 .about {
-    padding: var(--spacing-2xl) 0;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  padding: clamp(40px, 6vw, 80px) 0 clamp(40px, 8vw, 120px);
+  background: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  /* Чтобы хедер не перекрывал якорь при скролле по меню */
+  scroll-margin-top: 90px;
 }
 
-.about__content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-4xl);
-    align-items: center;
-    position: relative;
-    z-index: 2;
+/* Минимальная высота для первого экрана с учётом фиксированного хедера */
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: clamp(24px, 5vw, 60px);
 }
 
-.about__text-section {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-2xl);
+@media (min-width: 900px) {
+  .about__inner { grid-template-columns: 1.1fr 0.9fr; }
 }
 
-.about__header {
-    display: grid;
-    gap: var(--spacing-lg);
+.about__content { display: grid; gap: clamp(12px, 2.2vw, 24px); }
+
+.about__eyebrow {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .about__title {
-    margin: 0;
+  font-size: clamp(28px, 6.5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
-.about__title-main {
-    font-family: var(--font-family-base);
-    font-size: clamp(40px, 7vw, 100px);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-primary);
-    line-height: 0.92;
-    letter-spacing: -0.02em;
+.about__lead {
+  color: var(--color-text-secondary);
+  font-size: clamp(16px, 2.5vw, 20px);
+  max-width: 60ch;
 }
 
-.about__description {
-    color: var(--color-text-secondary);
-    max-width: 720px;
+.about__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.about__highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 640px;
 }
 
-/* Stats Section */
-.about__stats {
-    display: flex;
-    gap: var(--spacing-2xl);
-    padding: var(--spacing-lg) 0;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+.about__highlight {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 14px 16px;
+  background: var(--color-bg-primary);
 }
 
-.about__stat {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-    text-align: center;
+.about__highlight-value { display: block; font-weight: var(--font-weight-semibold); }
+.about__highlight-label { color: var(--color-text-muted); font-size: var(--font-size-sm); }
+
+.about__media { justify-self: center; }
+
+.about__photo-wrap {
+  width: min(520px, 80vw);
+  aspect-ratio: 4 / 5;
+  border-radius: var(--border-radius-xlg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-bg-secondary);
 }
 
-.about__stat-number {
-    font-family: var(--font-family-base);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-accent);
-    line-height: 1;
-}
+.about__photo { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.about__stat-label {
-    font-family: var(--font-family-base);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
+/* Reveal on scroll baseline (reusing pattern from Services) */
+.js-reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--transition-normal), transform var(--transition-normal); will-change: transform, opacity; }
+.js-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-/* CTA Section */
-.about__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-lg);
-    align-items: center;
-}
+/* Мобильная переработка hero */
+@media (max-width: 767px) {
+  .about { scroll-margin-top: 80px; padding: 32px 0 56px; }
 
-.about__cta-button {
-    font-family: var(--font-family-base);
-    padding: var(--spacing-lg) var(--spacing-xl);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-md);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-text-primary);
-    background: var(--color-text-primary);
-    color: var(--color-bg-primary);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-medium);
-    box-shadow: var(--shadow-md);
-    line-height: 1;
-}
+  /* Удобное построение: фото сверху, текст ниже */
+  .about__inner { display: flex; flex-direction: column; align-items: center; gap: 24px; min-height: calc(100dvh - 70px); }
+  .about__media { order: -1; }
 
-.about__cta-button--secondary {
-    background: transparent;
-    color: var(--color-text-primary);
-    box-shadow: none;
-}
+  /* Аватар — аккуратный круг, компактнее */
+  .about__photo-wrap { width: min(320px, 70vw); aspect-ratio: 1 / 1; border-radius: 30px; border: 1px solid var(--color-border); box-shadow: var(--shadow-md); background: var(--color-bg-primary); overflow: hidden; }
+  .about__photo { border-radius: 30px; object-position: center top; }
 
-.about__telegram-icon {
-    width: 20px;
-    height: 20px;
-}
+  /* Центровка контента и компактная типографика */
+  .about__content { text-align: center; align-items: center; gap: 12px; }
+  .about__title { font-size: clamp(26px, 8vw, 36px); }
+  .about__lead { font-size: 16px; max-width: 38ch; }
 
-/* Mini Table of Contents */
-.about__mini-toc {
-    border-top: 1px solid var(--color-border);
-    padding-top: var(--spacing-md);
-}
+  /* Кнопки — на всю ширину, одна под другой */
+  .about__actions { width: 100%; display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .about__actions .button { width: 100%; }
 
-.about__mini-toc ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-}
-
-.about__mini-toc a {
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-}
-
-.about__mini-toc a:hover {
-    color: var(--color-text-primary);
-    border-color: var(--color-text-primary);
-}
-
-/* Visual Section */
-.about__visual-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.about__portrait-container {
-    width: 100%;
-    max-width: 520px;
-}
-
-.about__portrait-main {
-    border-radius: var(--border-radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-}
-
-.about__portrait-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .about {
-        padding: var(--spacing-xl) 0;
-    }
-
-    .about__content {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-2xl);
-        text-align: center;
-    }
-
-    .about__visual-section {
-        order: -1;
-    }
-
-    .about__portrait-container {
-        max-width: 420px;
-    }
-}
-
-@media (max-width: 768px) {
-    .about {
-        padding: var(--spacing-lg) 0;
-    }
-
-    .about__title-main {
-        font-size: clamp(32px, 10vw, 72px);
-    }
-}
-
-@media (max-width: 480px) {
-    .about {
-        padding: var(--spacing-md) 0;
-        margin-top: 55px;
-    }
+  /* Метрики — 2 колонки компактно */
+  .about__highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: 100%; max-width: 420px; }
+  .about__highlight { padding: 10px 12px; }
 }
