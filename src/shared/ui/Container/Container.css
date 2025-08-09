@@ -19,7 +19,8 @@
 
 .container--full {
   max-width: none;
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Адаптивные отступы */

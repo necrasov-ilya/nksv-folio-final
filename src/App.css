@@ -7,13 +7,16 @@
 
 html, body {
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-family-base);
   line-height: 1.6;
+}
+
+/* Разрешаем вертикальный скролл, скрываем горизонтальный только у body */
+body {
   overflow-x: hidden;
 }
 

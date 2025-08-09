@@ -1,5 +1,5 @@
-import React, { memo, useMemo, useState, useEffect, useCallback } from 'react';
-import { useTheme } from '../../shared/hooks/useTheme';
+import React, { memo, useMemo, useState, useEffect, useCallback, useRef } from 'react';
+import { useTheme } from '../../app/providers/ThemeProvider';
 import Container from '../../shared/ui/Container/Container';
 import logoDark from '../../shared/assets/svg/logo/logo-dark.svg';
 import logoLight from '../../shared/assets/svg/logo/logo-light.svg';
@@ -10,9 +10,11 @@ import themeToggleLight from '../../shared/assets/svg/toggleThemBtn/light/light-
 import './Header.css';
 
 const NAV_ITEMS = [
-    { id: 'home', label: 'Главная', href: '#home' },
-    { id: 'services', label: 'Услуги', href: '#services' },
-    { id: 'portfolio', label: 'Портфолио', href: '#portfolio' },
+    { id: 'about', label: 'About', href: '#about' },
+    { id: 'services', label: 'Services', href: '#services' },
+    { id: 'skills', label: 'Skills', href: '#skills' },
+    { id: 'portfolio', label: 'Portfolio', href: '#portfolio' },
+    { id: 'projects', label: 'Projects', href: '#projects' },
     { id: 'faq', label: 'FAQ', href: '#faq' },
 ];
 
@@ -25,59 +27,122 @@ const Header = () => {
     const { theme, toggleTheme } = useTheme();
     const { logo, telegram, themeToggle } = useMemo(() => ASSETS[theme] || ASSETS.light, [theme]);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [active, setActive] = useState('about');
+    const [progress, setProgress] = useState(0);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const ticking = useRef(false);
+
+    // Ensure scroll is not locked on component mount
+    useEffect(() => {
+        const html = document.documentElement;
+        const body = document.body;
+        html.style.overflow = '';
+        body.style.overflow = '';
+    }, []);
+
     const closeMenu = useCallback(() => setMenuOpen(false), []);
     const toggleMenu = useCallback(() => setMenuOpen(v => !v), []);
 
+    // Lock scroll on mobile menu open (only on mobile devices)
     useEffect(() => {
-        const { style } = document.body;
-        if (menuOpen) {
-            style.overflow = 'hidden';
-            style.position = 'fixed';
-            style.top = `-${window.scrollY}px`;
-            style.width = '100%';
+        if (typeof window === 'undefined') return;
+        
+        const html = document.documentElement;
+        const body = document.body;
+        
+        // Only lock scroll on mobile/tablet devices
+        const isMobile = window.innerWidth <= 768;
+        
+        if (menuOpen && isMobile) {
+            html.style.overflow = 'hidden';
+            body.style.overflow = 'hidden';
         } else {
-            const top = style.top;
-            style.overflow = '';
-            style.position = '';
-            style.top = '';
-            style.width = '';
-            if (top) {
-                const y = parseInt(top || '0', 10);
-                window.scrollTo(0, Math.abs(y));
-            }
+            html.style.overflow = '';
+            body.style.overflow = '';
         }
+        
         return () => {
-            style.overflow = '';
-            style.position = '';
-            style.top = '';
-            style.width = '';
+            html.style.overflow = '';
+            body.style.overflow = '';
         };
     }, [menuOpen]);
 
+    // Close on ESC when menu open
     useEffect(() => {
         if (!menuOpen) return;
-        const onKey = e => {
-            if (e.key === 'Escape') closeMenu();
-        };
+        const onKey = e => { if (e.key === 'Escape') closeMenu(); };
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
     }, [menuOpen, closeMenu]);
 
-    const handleNavClick = useCallback(() => {
-        closeMenu();
-    }, [closeMenu]);
+    // Active section highlight
+    useEffect(() => {
+        const sections = NAV_ITEMS.map(n => document.querySelector(n.href)).filter(Boolean);
+        if (!sections.length || typeof IntersectionObserver === 'undefined') return;
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActive(entry.target.id);
+                    }
+                });
+            },
+            { root: null, rootMargin: '0px 0px -60% 0px', threshold: 0.25 }
+        );
+        sections.forEach(s => observer.observe(s));
+        return () => observer.disconnect();
+    }, []);
+
+    // Reading progress and scroll state
+    useEffect(() => {
+        const onScroll = () => {
+            if (ticking.current) return;
+            ticking.current = true;
+            window.requestAnimationFrame(() => {
+                const doc = document.documentElement;
+                const scrollTop = window.scrollY || doc.scrollTop;
+                const height = doc.scrollHeight - doc.clientHeight;
+                const value = height > 0 ? Math.min(100, Math.max(0, (scrollTop / height) * 100)) : 0;
+                setProgress(value);
+                
+                // Set scrolled state for pill animation (threshold: 100px)
+                setIsScrolled(scrollTop > 100);
+                
+                ticking.current = false;
+            });
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
+        };
+    }, []);
+
+    const handleNavClick = useCallback(() => { closeMenu(); }, [closeMenu]);
+
+    const tgUser = 'username_placeholder';
 
     return (
-        <header className="header">
+        <header className={`header${isScrolled ? ' header--scrolled' : ''}`}>
+            <div className="reading-progress" aria-hidden="true">
+                <span className="reading-progress__bar" style={{ width: `${progress}%` }} />
+            </div>
             <Container size="large">
                 <div className="header-content">
-                    <div className="logo-section">
+                    <a href="#about" className="logo-section" aria-label="Илья Некрасов — на главную">
                         <img src={logo} alt="NKSV Logo" className="logo" draggable="false" decoding="async" />
                         <span className="brand-name">NKSV</span>
-                    </div>
+                    </a>
                     <nav className="nav-section" aria-label="Основная навигация">
                         {NAV_ITEMS.map(item => (
-                            <a key={item.id} href={item.href} className="nav-link" draggable="false">
+                            <a
+                                key={item.id}
+                                href={item.href}
+                                className={`nav-link${active === item.id ? ' is-active' : ''}`}
+                                draggable="false"
+                            >
                                 <span>{item.label}</span>
                             </a>
                         ))}
@@ -91,10 +156,15 @@ const Header = () => {
                         >
                             <img src={themeToggle} alt="" aria-hidden="true" />
                         </button>
-                        <button type="button" className="cta-button">
+                        <a
+                            href={`https://t.me/${tgUser}`}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="cta-button"
+                        >
                             <img src={telegram} alt="Telegram" className="telegram-icon" decoding="async" />
-                            <span>Связаться со мной</span>
-                        </button>
+                            <span>Telegram</span>
+                        </a>
                         <button
                             type="button"
                             className={`burger-button${menuOpen ? ' is-open' : ''}`}
@@ -127,7 +197,7 @@ const Header = () => {
                         <a
                             key={item.id}
                             href={item.href}
-                            className="mobile-nav-link"
+                            className={`mobile-nav-link${active === item.id ? ' is-active' : ''}`}
                             onClick={handleNavClick}
                         >
                             {item.label}
@@ -143,7 +213,7 @@ const Header = () => {
                             <img src={themeToggle} alt="" aria-hidden="true" />
                             <span>Тема</span>
                         </button>
-                        <a href="#contact" className="mobile-cta" onClick={handleNavClick}>
+                        <a href={`tg://resolve?domain=${tgUser}`} className="mobile-cta" onClick={handleNavClick}>
                             <img src={telegram} alt="" className="telegram-icon" />
                             <span>Связаться со мной</span>
                         </a>

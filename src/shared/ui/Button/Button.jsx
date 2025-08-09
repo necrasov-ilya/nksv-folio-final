@@ -8,6 +8,8 @@ const Button = ({
   onClick,
   type = 'button',
   className = '',
+  as,
+  href,
   ...props
 }) => {
   const buttonClass = `
@@ -17,6 +19,20 @@ const Button = ({
     ${disabled ? 'button--disabled' : ''} 
     ${className}
   `.trim();
+
+  if (as === 'a') {
+    return (
+      <a
+        className={buttonClass}
+        href={href}
+        onClick={onClick}
+        aria-disabled={disabled || undefined}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
 
   return (
     <button
