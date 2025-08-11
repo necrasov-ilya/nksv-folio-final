@@ -1,9 +1,9 @@
 import Container from '../../shared/ui/Container/Container';
+import PLACEHOLDER_SMALL_1 from './media/placeholder-small-1.png';
+import PLACEHOLDER_SMALL_2 from './media/placeholder-small-2.png';
+import PLACEHOLDER_LARGE from './media/placeholder-large.png';
 import './SkillsGallery.css';
 
-const PLACEHOLDER_SMALL_1 = 'https://placehold.co/560x320/1F1F1F/F2F2F2.png?text=Design%20560x320';
-const PLACEHOLDER_SMALL_2 = 'https://placehold.co/560x320/1F1F1F/F2F2F2.png?text=Photo%20560x320';
-const PLACEHOLDER_LARGE   = 'https://placehold.co/1200x560/161616/F2F2F2.png?text=Web%20%E2%80%94%20Code%201200x560';
 
 const SkillsGallery = () => {
   return (

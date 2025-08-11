@@ -1,14 +1,15 @@
 import Container from '../../shared/ui/Container/Container';
 import './HeroSection.css';
+import heroPortrait from './media/nksv-portrait.png';
 
 const defaultPortrait = {
-  desktop: 'https://placehold.co/1400x600/161616/F2F2F2.png?text=1400×600',
-  mobile: 'https://placehold.co/160x160/1F1F1F/F2F2F2.png?text=Portrait',
+  desktop: heroPortrait,
+  mobile: heroPortrait,
 };
 
 const HeroSection = ({
   kicker = 'Web • UI/UX • Техконсалт',
-  title = 'Никита Краснов',
+  title = 'Илья Некрасов',
   subtitle = 'Делаю быстрые, выразительные веб-интерфейсы и помогаю бизнесу принимать техрешения.',
   portrait = defaultPortrait,
   ctaPrimaryHref = 'https://t.me/',

@@ -1,7 +1,6 @@
 import Container from '../../shared/ui/Container/Container';
+import avatar from './media/image.png';
 import './AboutSection.css';
-
-const avatar = 'https://placehold.co/160x160/1F1F1F/F2F2F2.png?text=Avatar';
 
 const AboutSection = ({
   id = 'about',
