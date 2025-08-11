@@ -6,8 +6,8 @@ const Footer = ({
   id = 'footer',
   name = 'Илья Некрасов',
   tagline = 'Frontend • UI/UX • Perf',
-  telegram = 'https://t.me/',
-  email = 'hello@example.com',
+  telegram = 'https://t.me/nksv_ilya',
+  email = 'evart2006@gmail.com',
 }) => {
   const year = new Date().getFullYear();
   const links = [
@@ -40,7 +40,7 @@ const Footer = ({
           <div className="footer__col footer__col--right">
             <a className="btn btn--primary" href={telegram} target="_blank" rel="noreferrer">
               <img className="btn__icon" src={tgIcon} alt="" aria-hidden />
-              <span className="btn__label">Telegram</span>
+              <span className="btn__label">Связаться со мной</span>
             </a>
             <a className="footer__email" href={`mailto:${email}`}>Email</a>
             <a className="footer__top" href="#top" aria-label="Back to top">↑ Back to top</a>

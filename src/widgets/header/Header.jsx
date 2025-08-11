@@ -58,7 +58,7 @@ const Header = ({ ctaHref = 'https://t.me/', links = [] }) => {
 
             <a className="cta" href={ctaHref} target="_blank" rel="noreferrer">
               <img className="cta__icon" src={tgIcon} alt="" aria-hidden />
-              <span className="cta__label">Telegram</span>
+              <span className="cta__label">Связаться со мной</span>
             </a>
           </div>
         </Container>

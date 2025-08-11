@@ -13,7 +13,7 @@ const HeroSection = ({
   title = 'Илья Некрасов',
   subtitle = 'Делаю быстрые, выразительные веб-интерфейсы и помогаю бизнесу принимать техрешения.',
   portrait = defaultPortrait,
-  ctaPrimaryHref = 'https://t.me/',
+  ctaPrimaryHref = 'https://t.me/nksv_ilya',
   ctaSecondaryHref = '#portfolio',
 }) => {
   return (

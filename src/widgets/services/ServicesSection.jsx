@@ -1,29 +1,31 @@
 import Container from '../../shared/ui/Container/Container';
+import web_make from './media/web_make.png';
+import u_xui from './media/u_xui.png'
+import tech_consult from './media/tech_consult.png';  
 import './ServicesSection.css';
 
-const ph = 'https://placehold.co/640x400/1F1F1F/F2F2F2.png?text=Service';
 
 const defaultCards = [
   {
     id: 'web',
     title: 'Веб‑разработка',
-    benefit: 'Быстрые SPA/SSR с чистой архитектурой и доступностью.',
-    tags: ['React', 'Vite', 'FSD', 'A11y'],
-    img: ph,
+    benefit: 'Быстрые (апокахзчтобыстрое) чистой архитектурой и доступностью.',
+    tags: ['React', 'Vite', 'FSD'],
+    img: web_make,
   },
   {
     id: 'design',
     title: 'UI/UX‑дизайн',
     benefit: 'Системный подход к визуалу: типографика, сетки, гайды.',
     tags: ['Design systems', 'Prototyping', 'Handoff'],
-    img: ph,
+    img: u_xui,
   },
   {
     id: 'consult',
     title: 'Техническая консультация',
     benefit: 'Выбор стека, перфоманс‑аудит, миграции и CI/CD.',
     tags: ['Perf', 'DX', 'CI/CD'],
-    img: ph,
+    img: tech_consult,
   },
 ];
 
