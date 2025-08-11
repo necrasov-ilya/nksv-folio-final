@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
+import logo from '../../shared/assets/svg/logo/logo-light.svg';
 import Container from '../../shared/ui/Container/Container';
 import './Header.css';
 
-const Header = ({ ctaHref = 'https://t.me/', links = [] }) => {
+const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
   const navLinks = links.length
     ? links
     : [
@@ -46,7 +47,7 @@ const Header = ({ ctaHref = 'https://t.me/', links = [] }) => {
         <Container size="xl" bleed>
           <div className="row">
             <a className="logo" href="#top" aria-label="Home">
-              <img src="src\shared\assets\svg\logo\logo-light.svg" className='logo__image' alt="logo" />NKSV
+              <img src={logo} className='logo__image' alt="logo" />NKSV
             </a>
             <nav className="nav" aria-label="Main navigation">
               {navLinks.map((l) => (

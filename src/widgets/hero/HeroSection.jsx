@@ -2,10 +2,11 @@ import Container from '../../shared/ui/Container/Container';
 import './HeroSection.css';
 import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
 import heroPortrait from './media/nksv-portrait.png';
+import mobileHeroPortrait from './media/nksv-portrait-mobile.png';
 
 const defaultPortrait = {
   desktop: heroPortrait,
-  mobile: heroPortrait,
+  mobile: mobileHeroPortrait,
 };
 
 const HeroSection = ({

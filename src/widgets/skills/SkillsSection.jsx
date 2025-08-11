@@ -12,7 +12,7 @@ const SkillsSection = ({ id = 'skills', groups = defaultGroups }) => {
   return (
   <section id={id} className="section section--compact">
       <Container size="xl">
-        <h2 className="section-title">Навыки</h2>
+        <h2 className="section-title">Кто я?</h2>
         <div className="skills-grid">
           {entries.map(([group, items]) => (
             <div className="skills-col" key={group}>

@@ -13,7 +13,7 @@ const AboutSection = ({
         <div className="about section--panel">
           <img src={avatar} alt="Avatar" className="about__avatar" loading="lazy" decoding="async" />
           <div className="about__content">
-            <h2 className="about__title">О себе</h2>
+            <h2 className="about__title">Кто я?</h2>
             <p className="about__text">{text}</p>
             <div className="about__tags" role="list">
               {tags.map((t) => (

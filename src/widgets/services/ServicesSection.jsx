@@ -33,7 +33,7 @@ const ServicesSection = ({ id = 'services', cards = defaultCards }) => {
   return (
     <section id={id} className="section">
       <Container size="xl">
-        <h2 className="section-title">Сервисы</h2>
+        <h2 className="section-title">Чем я могу вам помочь?</h2>
         <div className="services-grid">
           {cards.map((c) => (
             <article key={c.id} className="service-card" tabIndex={0}>
