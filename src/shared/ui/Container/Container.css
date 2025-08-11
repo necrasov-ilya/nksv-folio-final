@@ -17,9 +17,18 @@
   max-width: 1400px;
 }
 
+.container--xl {
+  max-width: var(--container-max-width);
+}
+
 .container--full {
   max-width: none;
   padding: 0;
+}
+
+.container--bleed {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Адаптивные отступы */
@@ -33,4 +42,32 @@
   .container {
     padding: 0 var(--spacing-xl);
   }
+}
+
+/* Section utilities */
+.section {
+  position: relative;
+  padding: var(--spacing-3xl) 0;
+  color: var(--color-text-primary);
+}
+
+.section--panel {
+  background: var(--color-bg-accent);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--section-border-radius);
+}
+
+/* Radial background helper for soft glows */
+.section__radial-bg {
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 60%;
+  background: radial-gradient(60% 60% at 50% 0%, rgba(217,63,80,0.12), rgba(0,0,0,0) 60%);
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+@media (max-width: 768px) {
+  .section { padding: var(--spacing-2xl) 0; }
 }

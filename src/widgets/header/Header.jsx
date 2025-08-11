@@ -1,157 +1,68 @@
-import React, { memo, useMemo, useState, useEffect, useCallback } from 'react';
-import { useTheme } from '../../shared/hooks/useTheme';
+import { useEffect, useState } from 'react';
 import Container from '../../shared/ui/Container/Container';
-import logoDark from '../../shared/assets/svg/logo/logo-dark.svg';
-import logoLight from '../../shared/assets/svg/logo/logo-light.svg';
-import telegramDark from '../../shared/assets/svg/social/telegram-logo-dark.svg';
-import telegramLight from '../../shared/assets/svg/social/telegram-logo-light.svg';
-import themeToggleDark from '../../shared/assets/svg/toggleThemBtn/dark/dark-theme-light-btn.svg';
-import themeToggleLight from '../../shared/assets/svg/toggleThemBtn/light/light-theme-black-btn.svg';
 import './Header.css';
 
-const NAV_ITEMS = [
-    { id: 'home', label: 'Главная', href: '#home' },
-    { id: 'services', label: 'Услуги', href: '#services' },
-    { id: 'portfolio', label: 'Портфолио', href: '#portfolio' },
-    { id: 'faq', label: 'FAQ', href: '#faq' },
-];
+const Header = ({ ctaHref = 'https://t.me/', links = [] }) => {
+  const navLinks = links.length
+    ? links
+    : [
+        { href: '#about', label: 'About' },
+        { href: '#services', label: 'Services' },
+        { href: '#skills', label: 'Skills' },
+        { href: '#portfolio', label: 'Portfolio' },
+        { href: '#projects', label: 'Projects' },
+        { href: '#faq', label: 'FAQ' },
+      ];
 
-const ASSETS = {
-    light: { logo: logoDark, telegram: telegramDark, themeToggle: themeToggleLight },
-    dark: { logo: logoLight, telegram: telegramLight, themeToggle: themeToggleDark },
-};
+  const [active, setActive] = useState(navLinks[0].href);
+  const [scrolled, setScrolled] = useState(false);
 
-const Header = () => {
-    const { theme, toggleTheme } = useTheme();
-    const { logo, telegram, themeToggle } = useMemo(() => ASSETS[theme] || ASSETS.light, [theme]);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const closeMenu = useCallback(() => setMenuOpen(false), []);
-    const toggleMenu = useCallback(() => setMenuOpen(v => !v), []);
-
-    useEffect(() => {
-        const { style } = document.body;
-        if (menuOpen) {
-            style.overflow = 'hidden';
-            style.position = 'fixed';
-            style.top = `-${window.scrollY}px`;
-            style.width = '100%';
-        } else {
-            const top = style.top;
-            style.overflow = '';
-            style.position = '';
-            style.top = '';
-            style.width = '';
-            if (top) {
-                const y = parseInt(top || '0', 10);
-                window.scrollTo(0, Math.abs(y));
-            }
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      // highlight currently visible section
+      const offsets = navLinks
+        .map((l) => ({ id: l.href.slice(1), el: document.getElementById(l.href.slice(1)) }))
+        .filter((x) => x.el);
+      const y = window.scrollY + 120;
+      for (let i = offsets.length - 1; i >= 0; i--) {
+        const { id, el } = offsets[i];
+        const top = el.offsetTop;
+        if (y >= top) {
+          setActive(`#${id}`);
+          break;
         }
-        return () => {
-            style.overflow = '';
-            style.position = '';
-            style.top = '';
-            style.width = '';
-        };
-    }, [menuOpen]);
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-    useEffect(() => {
-        if (!menuOpen) return;
-        const onKey = e => {
-            if (e.key === 'Escape') closeMenu();
-        };
-        window.addEventListener('keydown', onKey);
-        return () => window.removeEventListener('keydown', onKey);
-    }, [menuOpen, closeMenu]);
+  return (
+    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className="header-blur" aria-hidden="true" />
+      <Container size="xl" bleed>
+        <div className="site-header__inner">
+          <a className="site-header__logo" href="#" aria-label="Home">
+            <span className="dot" /> nksv
+          </a>
 
-    const handleNavClick = useCallback(() => {
-        closeMenu();
-    }, [closeMenu]);
+          <nav className="site-header__nav" aria-label="Main navigation">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} className={active === l.href ? 'is-active' : ''}>
+                {l.label}
+              </a>
+            ))}
+          </nav>
 
-    return (
-        <header className="header">
-            <Container size="large">
-                <div className="header-content">
-                    <div className="logo-section">
-                        <img src={logo} alt="NKSV Logo" className="logo" draggable="false" decoding="async" />
-                        <span className="brand-name">NKSV</span>
-                    </div>
-                    <nav className="nav-section" aria-label="Основная навигация">
-                        {NAV_ITEMS.map(item => (
-                            <a key={item.id} href={item.href} className="nav-link" draggable="false">
-                                <span>{item.label}</span>
-                            </a>
-                        ))}
-                    </nav>
-                    <div className="header-actions">
-                        <button
-                            type="button"
-                            className="theme-toggle-button"
-                            onClick={toggleTheme}
-                            aria-label="Переключить тему"
-                        >
-                            <img src={themeToggle} alt="" aria-hidden="true" />
-                        </button>
-                        <button type="button" className="cta-button">
-                            <img src={telegram} alt="Telegram" className="telegram-icon" decoding="async" />
-                            <span>Связаться со мной</span>
-                        </button>
-                        <button
-                            type="button"
-                            className={`burger-button${menuOpen ? ' is-open' : ''}`}
-                            aria-label="Открыть меню"
-                            aria-expanded={menuOpen}
-                            aria-controls="mobile-menu"
-                            onClick={toggleMenu}
-                        >
-                            <span className="burger-line" />
-                            <span className="burger-line" />
-                            <span className="burger-line" />
-                        </button>
-                    </div>
-                </div>
-            </Container>
-            <div
-                className={`mobile-backdrop${menuOpen ? ' open' : ''}`}
-                onClick={closeMenu}
-                aria-hidden={!menuOpen}
-            />
-            <aside
-                id="mobile-menu"
-                className={`mobile-menu${menuOpen ? ' open' : ''}`}
-                role="dialog"
-                aria-modal="true"
-                aria-label="Мобильное меню навигации"
-            >
-                <nav className="mobile-nav">
-                    {NAV_ITEMS.map(item => (
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            className="mobile-nav-link"
-                            onClick={handleNavClick}
-                        >
-                            {item.label}
-                        </a>
-                    ))}
-                    <div className="mobile-controls">
-                        <button
-                            type="button"
-                            className="mobile-theme-toggle"
-                            onClick={() => { toggleTheme(); }}
-                            aria-label="Переключить тему"
-                        >
-                            <img src={themeToggle} alt="" aria-hidden="true" />
-                            <span>Тема</span>
-                        </button>
-                        <a href="#contact" className="mobile-cta" onClick={handleNavClick}>
-                            <img src={telegram} alt="" className="telegram-icon" />
-                            <span>Связаться со мной</span>
-                        </a>
-                    </div>
-                </nav>
-            </aside>
-        </header>
-    );
+          <a className="site-header__cta" href={ctaHref} target="_blank" rel="noreferrer">
+            Telegram
+          </a>
+        </div>
+      </Container>
+    </header>
+  );
 };
 
-export default memo(Header);
+export default Header;
