@@ -12,7 +12,7 @@ import "./HomePage.css";
 
 const HomePage = () => {
     return (
-        <div className="home-page">
+    <div className="home-page" id="top">
             <Header />
             <main className="home-page__main">
                 <HeroSection />
