@@ -33,6 +33,7 @@
   grid-row: 1 / span 2
 }
 
+
 .tile {
   position: relative;
   display: block;
@@ -41,7 +42,8 @@
   border: 1px solid var(--color-border);
   background: var(--color-bg-accent);
   box-shadow: var(--shadow-md);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast)
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  cursor: pointer;
 }
 
 .tile img {
@@ -56,10 +58,72 @@
   aspect-ratio: 1200/560
 }
 
-.tile:hover {
+
+.tile:hover,
+.tile:focus {
   transform: translateY(-2px);
   border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-lg)
+  box-shadow: var(--shadow-lg);
+}
+
+.tile__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.85);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(.4,0,.2,1);
+  z-index: 2;
+}
+
+.tile__overlay--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tile__overlay-content {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.tile__overlay-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+.tile__overlay-desc {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tile__overlay {
+    transition: opacity 0.3s cubic-bezier(.4,0,.2,1);
+  }
+  .tile:hover .tile__overlay,
+  .tile:focus .tile__overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .tile__overlay-content {
+    padding: 16px 8px;
+  }
+  .tile__overlay-title {
+    font-size: 1rem;
+  }
+  .tile__overlay-desc {
+    font-size: 0.95rem;
+  }
 }
 
 .tile__badge {
