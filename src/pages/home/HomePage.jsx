@@ -3,7 +3,7 @@ import Header from "../../widgets/header/Header";
 import HeroSection from "../../widgets/hero/HeroSection";
 import AboutSection from "../../widgets/about/AboutSection";
 import ServicesSection from "../../widgets/services/ServicesSection";
-import SkillsSection from "../../widgets/skills/SkillsSection";
+import SkillsGallery from "../../widgets/skillsGallery/SkillsGallery";
 import PortfolioSection from "../../widgets/portfolio/PortfolioSection";
 import ProjectsSection from "../../widgets/projects/ProjectsSection";
 import FaqSection from "../../widgets/faq/FaqSection";
@@ -17,8 +17,8 @@ const HomePage = () => {
             <main className="home-page__main">
                 <HeroSection />
                 <AboutSection />
+                <SkillsGallery />
                 <ServicesSection />
-                <SkillsSection />
                 <PortfolioSection />
                 <ProjectsSection />
                 <FaqSection />

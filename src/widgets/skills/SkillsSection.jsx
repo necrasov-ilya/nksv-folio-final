@@ -10,7 +10,7 @@ const defaultGroups = {
 const SkillsSection = ({ id = 'skills', groups = defaultGroups }) => {
   const entries = Object.entries(groups);
   return (
-    <section id={id} className="section">
+  <section id={id} className="section section--compact">
       <Container size="xl">
         <h2 className="section-title">Навыки</h2>
         <div className="skills-grid">

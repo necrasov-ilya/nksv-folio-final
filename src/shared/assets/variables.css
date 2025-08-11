@@ -9,13 +9,13 @@
 
     --font-size-xs: 14px;
     --font-size-sm: 16px;
-    --font-size-base: 18px; /* body target 18–20 */
+    --font-size-base: 18px;
     --font-size-md: 20px;
     --font-size-lg: 24px;
     --font-size-xlg: 32px;
     --font-size-xl: 48px;
-    --font-size-2xl: 64px; /* hero scale */
-    --font-size-3xl: 80px; /* hero scale */
+    --font-size-2xl: 64px;
+    --font-size-3xl: 80px; 
     --font-size-4xl: 96px;
 
     /* Base theme: dark */
@@ -86,9 +86,13 @@
     --z-index-mobile-menu: 1001;
 
     --section-overlap: 60px;
-    --section-border-radius: 24px; /* per spec */
-    --section-padding-top: 60px;
-    --section-padding-bottom: 120px;
+    --section-border-radius: 24px; 
+    --section-padding-top: 48px;
+    --section-padding-bottom: 72px;
+    --section-padding-top-compact: 32px;
+    --section-padding-bottom-compact: 48px;
+    --section-padding-top-expanded: 10px;
+    --section-padding-bottom-expanded: 10px;
 
     --header-logo-height: 45px;
     --mobile-button-size: 64px;

@@ -9,7 +9,7 @@ const AboutSection = ({
   tags = ['React', 'Vite', 'CSS-in-CSS', 'Design systems', 'Perf'],
 }) => {
   return (
-    <section id={id} className="section">
+  <section id={id} className="section section--compact">
       <Container size="xl">
         <div className="about section--panel">
           <img src={avatar} alt="Avatar" className="about__avatar" loading="lazy" decoding="async" />

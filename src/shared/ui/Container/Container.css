@@ -47,9 +47,13 @@
 /* Section utilities */
 .section {
   position: relative;
-  padding: var(--spacing-3xl) 0;
+  padding-block: var(--section-padding-top) var(--section-padding-bottom);
   color: var(--color-text-primary);
 }
+.section--compact { padding-block: var(--section-padding-top-compact) var(--section-padding-bottom-compact); }
+.section--expanded { padding-block: var(--section-padding-top-expanded) var(--section-padding-bottom-expanded); }
+.section > *:first-child { margin-top: 0; }
+.section > *:last-child { margin-bottom: 0; }
 
 .section--panel {
   background: var(--color-bg-accent);
@@ -74,5 +78,5 @@
 }
 
 @media (max-width: 768px) {
-  .section { padding: var(--spacing-2xl) 0; }
+  .section { padding-block: var(--section-padding-top) var(--section-padding-bottom); }
 }

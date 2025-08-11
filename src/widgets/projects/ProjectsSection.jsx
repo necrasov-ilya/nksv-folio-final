@@ -10,7 +10,7 @@ const defaultItems = [
 
 const ProjectsSection = ({ id = 'projects', items = defaultItems }) => {
   return (
-    <section id={id} className="section">
+  <section id={id} className="section section--compact">
       <Container size="xl">
         <h2 className="section-title">Проекты</h2>
         <div className="projects-grid">
