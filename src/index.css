@@ -11,6 +11,8 @@
 }
 
 html { scroll-behavior: smooth; }
+/* Prevent jerk when jumping to anchors under sticky header */
+section[id] { scroll-margin-top: 84px; }
 
 body {
   margin: 0;

@@ -1,5 +1,6 @@
 import Container from '../../shared/ui/Container/Container';
 import './HeroSection.css';
+import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
 import heroPortrait from './media/nksv-portrait.png';
 
 const defaultPortrait = {
@@ -24,7 +25,10 @@ const HeroSection = ({
             <h1 className="hero__title">{title}</h1>
             <p className="hero__subtitle">{subtitle}</p>
             <div className="hero__actions">
-              <a className="btn btn--primary" href={ctaPrimaryHref} target="_blank" rel="noreferrer">Telegram</a>
+              <a className="btn btn--primary" href={ctaPrimaryHref} target="_blank" rel="noreferrer">
+                <img className="btn__icon" src={tgIcon} alt="" aria-hidden />
+                <span className="btn__label">Telegram</span>
+              </a>
               <a className="btn btn--secondary" href={ctaSecondaryHref}>Смотреть работы</a>
             </div>
           </div>

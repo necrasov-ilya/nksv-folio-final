@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
 import Container from '../../shared/ui/Container/Container';
 import './Header.css';
 
@@ -45,9 +46,8 @@ const Header = ({ ctaHref = 'https://t.me/', links = [] }) => {
         <Container size="xl" bleed>
           <div className="row">
             <a className="logo" href="#top" aria-label="Home">
-              <span className="dot" /> nksv
+              <img src="src\shared\assets\svg\logo\logo-light.svg" className='logo__image' alt="logo" />NKSV
             </a>
-
             <nav className="nav" aria-label="Main navigation">
               {navLinks.map((l) => (
                 <a key={l.href} href={l.href} className={active === l.href ? 'is-active' : ''}>
@@ -57,7 +57,8 @@ const Header = ({ ctaHref = 'https://t.me/', links = [] }) => {
             </nav>
 
             <a className="cta" href={ctaHref} target="_blank" rel="noreferrer">
-              Telegram
+              <img className="cta__icon" src={tgIcon} alt="" aria-hidden />
+              <span className="cta__label">Telegram</span>
             </a>
           </div>
         </Container>

@@ -1,4 +1,5 @@
 import Container from '../../shared/ui/Container/Container';
+import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
 import './Footer.css';
 
 const Footer = ({
@@ -37,7 +38,10 @@ const Footer = ({
           </nav>
 
           <div className="footer__col footer__col--right">
-            <a className="btn btn--primary" href={telegram} target="_blank" rel="noreferrer">Telegram</a>
+            <a className="btn btn--primary" href={telegram} target="_blank" rel="noreferrer">
+              <img className="btn__icon" src={tgIcon} alt="" aria-hidden />
+              <span className="btn__label">Telegram</span>
+            </a>
             <a className="footer__email" href={`mailto:${email}`}>Email</a>
             <a className="footer__top" href="#top" aria-label="Back to top">↑ Back to top</a>
           </div>
