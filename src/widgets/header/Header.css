@@ -207,6 +207,12 @@
     box-shadow: var(--shadow-md)
 }
 
+@media (max-width: 1280px) {
+    .nav {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .nav {
         display: none
