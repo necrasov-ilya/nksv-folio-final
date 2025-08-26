@@ -35,7 +35,6 @@ const skills = [
 const SkillsGallery = () => {
   const [activeIdx, setActiveIdx] = useState(null);
 
-  // Для мобильных: показывать плашку по тапу, скрывать по повторному тапу или уходу
   const handleTileClick = idx => {
     setActiveIdx(activeIdx === idx ? null : idx);
   };

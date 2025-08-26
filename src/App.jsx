@@ -5,9 +5,11 @@ import Preloader from './widgets/preloader/Preloader';
 import './shared/assets/variables.css';
 import './shared/assets/typography.css';
 import './App.css';
+import useSmoothAnchors from './shared/hooks/useSmoothAnchors';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  useSmoothAnchors(88);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);

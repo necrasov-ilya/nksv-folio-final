@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
-import logo from '../../shared/assets/svg/logo/logo-light.svg';
+import logoLight from './assets/logo-light.png';
 import Container from '../../shared/ui/Container/Container';
+import Button from '../../shared/ui/Button/Button';
 import './Header.css';
 
 const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
@@ -16,7 +17,7 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
         { href: '#faq', label: 'FAQ' },
       ];
 
-  const [active, setActive] = useState(navLinks[0].href);
+  const [active, setActive] = useState('#top');
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,39 +29,51 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
       const y = window.scrollY + 120;
       for (let i = offsets.length - 1; i >= 0; i--) {
         const { id, el } = offsets[i];
-        const top = el.offsetTop;
+        const top = el.offsetTop + 8; // small threshold to avoid early activation at the very top
         if (y >= top) {
           setActive(`#${id}`);
           break;
         }
       }
+      if (window.scrollY < 60) setActive('#top');
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const hasActive = active !== '#top';
   return (
-    <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
+    <header className={`header ${scrolled ? 'is-scrolled' : ''} ${hasActive ? 'has-active' : ''}`}>
       <div className="backdrop" aria-hidden="true" />
       <div className="inner">
         <Container size="xl" bleed>
           <div className="row">
             <a className="logo" href="#top" aria-label="Home">
-              <img src={logo} className='logo__image' alt="logo" />NKSV
+              <img className="logo__image" src={logoLight} alt="logo" width="28" height="28" />
+              <span className="logo__text">NKSV</span>
             </a>
+
             <nav className="nav" aria-label="Main navigation">
               {navLinks.map((l) => (
-                <a key={l.href} href={l.href} className={active === l.href ? 'is-active' : ''}>
+                <a key={l.href} href={l.href} className={`nav__chip ${active === l.href ? 'is-active' : ''}`}>
                   {l.label}
                 </a>
               ))}
             </nav>
 
-            <a className="cta" href={ctaHref} target="_blank" rel="noreferrer">
-              <img className="cta__icon" src={tgIcon} alt="" aria-hidden />
-              <span className="cta__label">Связаться со мной</span>
-            </a>
+            <div className="actions">
+              <Button
+                href={ctaHref}
+                target="_blank"
+                variant="primary"
+                size="small"
+                className="header__cta"
+              >
+                <img className="header__cta-icon" src={tgIcon} alt="" aria-hidden />
+                <span>Связаться со мной</span>
+              </Button>
+            </div>
           </div>
         </Container>
       </div>

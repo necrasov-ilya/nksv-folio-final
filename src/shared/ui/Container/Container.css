@@ -49,6 +49,7 @@
   position: relative;
   padding-block: var(--section-padding-top) var(--section-padding-bottom);
   color: var(--color-text-primary);
+  scroll-margin-top: var(--header-height);
 }
 .section--compact { padding-block: var(--section-padding-top-compact) var(--section-padding-bottom-compact); }
 .section--expanded { padding-block: var(--section-padding-top-expanded) var(--section-padding-bottom-expanded); }

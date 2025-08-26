@@ -18,12 +18,12 @@
 .button--primary {
   background-color: var(--color-accent);
   color: white;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 6px 18px rgba(217, 63, 80, .35);
 }
 
 .button--primary:hover:not(.button--disabled) {
   background-color: var(--color-accent-hover);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 24px rgba(217, 63, 80, .45);
   transform: translateY(-1px);
 }
 
@@ -36,6 +36,8 @@
 .button--secondary:hover:not(.button--disabled) {
   border-color: var(--color-accent);
   color: var(--color-accent);
+  box-shadow: 0 8px 24px rgba(217, 63, 80, .20);
+  transform: translateY(-1px);
 }
 
 .button--ghost {
@@ -46,25 +48,33 @@
 .button--ghost:hover:not(.button--disabled) {
   background-color: var(--color-bg-accent);
   color: var(--color-text-primary);
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transform: translateY(-1px);
 }
 
 /* Размеры кнопок */
 .button--small {
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: 0 var(--spacing-md);
   font-size: var(--font-size-sm);
   gap: var(--spacing-xs);
+  height: 36px;
+  line-height: 36px;
 }
 
 .button--medium {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: 0 var(--spacing-lg);
   font-size: var(--font-size-base);
   gap: var(--spacing-sm);
+  height: 44px;
+  line-height: 44px;
 }
 
 .button--large {
-  padding: var(--spacing-lg) var(--spacing-xl);
+  padding: 0 var(--spacing-xl);
   font-size: var(--font-size-lg);
   gap: var(--spacing-md);
+  height: 52px;
+  line-height: 52px;
 }
 
 /* Состояние disabled */
@@ -72,6 +82,12 @@
   opacity: 0.6;
   cursor: not-allowed;
   transform: none !important;
+}
+
+/* Active press states */
+.button:active:not(.button--disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Мобильная адаптация */

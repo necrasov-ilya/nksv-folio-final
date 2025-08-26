@@ -18,22 +18,23 @@
     --font-size-3xl: 80px; 
     --font-size-4xl: 96px;
 
-    /* Base theme: dark */
-    --color-bg-primary: #0D0F10;
-    --color-bg-secondary: #1F1F1F;
-    --color-bg-accent: #161616;
-    --color-text-primary: #F2F2F2;
-    --color-text-secondary: #E0E0E0;
-    --color-text-muted: #A3A3A3;
-    --color-border: #262626;
-    --color-border-hover: #3A3A3A;
-    --color-accent: #D93F50;
-    --color-accent-hover: #E05664;
+    /* Base theme: dark — refined palette */
+    --color-bg-primary: #0B0E11;          /* slightly cooler, deeper base */
+    --color-bg-secondary: #121518;        /* subtle separation */
+    --color-bg-accent: #121315;           /* panels / chips background */
+    --color-text-primary: #F5F7FA;        /* crisper white */
+    --color-text-secondary: #C9D1D9;      /* premium dim */
+    --color-text-muted: #8B949E;          /* elegant muted */
+    --color-border: #2A2F36;              /* refined border */
+    --color-border-hover: #3A424B;        /* hover border */
+    --color-accent: #E0495A;              /* richer accent */
+    --color-accent-hover: #F05C6C;        /* accent hover */
 
     /* Compatibility tokens */
     --color-primary: var(--color-accent);
-    --color-primary-dark: #AA2F3B;
-    --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    --color-primary-dark: #B83A4A;
+    --gradient-primary: linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 85%, #FF6B7B), var(--color-primary-dark));
+    --color-accent-weak: color-mix(in oklab, var(--color-accent) 18%, transparent);
 
     /* Spacing */
     --spacing-xs: 8px;
@@ -58,13 +59,13 @@
     --border-radius-xl: 32px;
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.25);
-    --shadow-md: 0 0 0 1px rgba(255,255,255,.08), 0 12px 24px rgba(0,0,0,.35);
-    --shadow-lg: 0 20px 40px rgba(0,0,0,.45);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.25), 0 0 0 1px rgba(255,255,255,.06) inset;
+    --shadow-md: 0 0 0 1px rgba(255,255,255,.07), 0 14px 28px rgba(0,0,0,.38);
+    --shadow-lg: 0 22px 44px rgba(0,0,0,.48);
     --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.25);
     --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.35);
     --shadow-heavy: 0 15px 35px rgba(0, 0, 0, 0.55);
-    --shadow-primary: 0 8px 25px rgba(217, 63, 80, 0.35);
+    --shadow-primary: 0 10px 28px color-mix(in oklab, var(--color-accent) 35%, rgba(0,0,0,.0));
 
     /* Transitions */
     --transition-fast: 120ms cubic-bezier(.22,.61,.36,1);
@@ -91,25 +92,25 @@
     --section-padding-bottom: 72px;
     --section-padding-top-compact: 32px;
     --section-padding-bottom-compact: 48px;
-    --section-padding-top-expanded: 10px;
+    --section-padding-top-expanded: 5px;   
     --section-padding-bottom-expanded: 10px;
 
     --header-logo-height: 45px;
+    --header-height: 72px;
     --mobile-button-size: 64px;
     --header-border-color: var(--color-border);
 }
 
-/* Keep dark theme alias for compatibility (same as base) */
 [data-theme="dark"] {
-    --color-bg-primary: #0D0F10;
-    --color-bg-secondary: #1F1F1F;
-    --color-bg-accent: #161616;
-    --color-text-primary: #F2F2F2;
-    --color-text-secondary: #E0E0E0;
-    --color-text-muted: #A3A3A3;
-    --color-border: #262626;
-    --color-border-hover: #3A3A3A;
-    --color-accent: #D93F50;
-    --color-accent-hover: #E05664;
+    --color-bg-primary: #0B0E11;
+    --color-bg-secondary: #121518;
+    --color-bg-accent: #121315;
+    --color-text-primary: #F5F7FA;
+    --color-text-secondary: #C9D1D9;
+    --color-text-muted: #8B949E;
+    --color-border: #2A2F36;
+    --color-border-hover: #3A424B;
+    --color-accent: #E0495A;
+    --color-accent-hover: #F05C6C;
     --header-border-color: var(--color-border);
 }

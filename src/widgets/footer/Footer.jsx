@@ -1,5 +1,6 @@
 import Container from '../../shared/ui/Container/Container';
 import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
+import Button from '../../shared/ui/Button/Button';
 import './Footer.css';
 
 const Footer = ({
@@ -20,31 +21,32 @@ const Footer = ({
   ];
 
   return (
-    <footer id={id} role="contentinfo" className="footer section section--panel section--bleed">
+    <footer id={id} role="contentinfo" className="footer section">
       <Container size="xl">
-        <div className="footer__inner">
-          <div className="footer__col footer__col--left">
+        <div className="footer__panel">
+          <div className="footer__brand-block">
             <strong className="footer__brand">{name}</strong>
             <div className="footer__tagline">{tagline}</div>
-            <div className="footer__copy">© {year}</div>
           </div>
 
-          <nav className="footer__col footer__col--center" aria-label="Footer">
-            <ul className="footer__nav">
-              {links.map((l) => (
-                <li key={l.href}><a href={l.href}>{l.label}</a></li>
-              ))}
-            </ul>
+          <nav className="footer__nav" aria-label="Footer">
+            {links.map((l) => (
+              <a key={l.href} href={l.href} className="footer__link">{l.label}</a>
+            ))}
           </nav>
 
-          <div className="footer__col footer__col--right">
-            <a className="btn btn--primary" href={telegram} target="_blank" rel="noreferrer">
-              <img className="btn__icon" src={tgIcon} alt="" aria-hidden />
-              <span className="btn__label">Связаться со мной</span>
-            </a>
-            <a className="footer__email" href={`mailto:${email}`}>Email</a>
-            <a className="footer__top" href="#top" aria-label="Back to top">↑ Back to top</a>
+          <div className="footer__contacts">
+            <Button href={telegram} target="_blank" variant="primary" size="small" className="footer__cta">
+              <img className="footer__cta-icon" src={tgIcon} alt="" aria-hidden />
+              <span>Связаться со мной</span>
+            </Button>
+            <a className="footer__text-link" href={`mailto:${email}`}>Email</a>
           </div>
+        </div>
+
+        <div className="footer__bottom">
+          <span className="footer__copy">© {year} • Сделано с вниманием к деталям</span>
+          <a className="footer__top" href="#top" aria-label="Back to top">Наверх ↑</a>
         </div>
       </Container>
     </footer>
