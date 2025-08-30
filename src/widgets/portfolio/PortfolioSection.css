@@ -15,4 +15,4 @@
 
 
 @media (max-width:1024px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:768px){.portfolio-grid{grid-template-columns:1fr}.portfolio{padding:var(--spacing-xl)}.portfolio__toolbar{flex-direction:column;align-items:stretch}.search{flex:1}}
+@media (max-width:768px){.portfolio-grid{grid-template-columns:1fr}.portfolio{padding:var(--spacing-xl)}.portfolio__toolbar{flex-direction:column;align-items:stretch}.search{flex:1;height:48px}}

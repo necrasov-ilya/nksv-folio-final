@@ -9,11 +9,12 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
   const navLinks = links.length
     ? links
     : [
-        { href: '#about', label: 'About' },
-        { href: '#services', label: 'Services' },
-        { href: '#skills', label: 'Skills' },
-        { href: '#portfolio', label: 'Portfolio' },
-        { href: '#projects', label: 'Projects' },
+        { href: '#top', label: 'Главная' },
+        { href: '#about', label: 'Обо мне' },
+        { href: '#skills', label: 'Навыки' },
+        { href: '#services', label: 'Услуги' },
+        { href: '#portfolio', label: 'Портфолио' },
+        { href: '#projects', label: 'Проекты' },
         { href: '#faq', label: 'FAQ' },
       ];
 
@@ -49,7 +50,7 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
       <div className="inner">
         <Container size="xl" bleed>
           <div className="row">
-            <a className="logo" href="#top" aria-label="Home">
+            <a className="logo" href="#top" aria-label="Главная">
               <img className="logo__image" src={logoLight} alt="logo" width="28" height="28" />
               <span className="logo__text">NKSV</span>
             </a>

@@ -12,10 +12,10 @@ const defaultItems = [
 ];
 
 const chips = [
-  { key: 'all', label: 'All' },
-  { key: 'web', label: 'Web' },
-  { key: 'design', label: 'Design' },
-  { key: 'photo', label: 'Photo' },
+  { key: 'all', label: 'Все' },
+  { key: 'web', label: 'Сайты' },
+  { key: 'design', label: 'Дизайн' },
+  { key: 'photo', label: 'Фото' },
 ];
 
 const PortfolioSection = ({ id = 'portfolio', items = defaultItems }) => {
@@ -40,6 +40,7 @@ const PortfolioSection = ({ id = 'portfolio', items = defaultItems }) => {
   return (
     <section id={id} className="section">
       <Container size="xl">
+        <h2 className="section-title">Портфолио</h2>
         <div className="portfolio section--panel">
           <div className="portfolio__toolbar" role="toolbar" aria-label="Фильтры">
             <div className="chips">
