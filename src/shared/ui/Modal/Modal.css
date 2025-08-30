@@ -1,0 +1,13 @@
+.modal{position:fixed;inset:0;display:grid;place-items:center;padding:var(--spacing-xl);z-index:10000}
+.modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);border:none}
+.modal__panel{position:relative;z-index:1;max-width:960px;width:100%;background:var(--color-bg-accent);border:1px solid var(--color-border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.modal__header{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 0}
+.modal__title{margin:0;font-size:20px}
+.modal__close{position:absolute;top:10px;right:10px;background:transparent;border:none;color:var(--color-text-secondary);font-size:22px;line-height:1;padding:6px;cursor:pointer;border-radius:8px}
+.modal__close:hover{background:rgba(255,255,255,.06);color:var(--color-text-primary)}
+.modal__body{padding:16px}
+.modal__actions{display:flex;gap:10px;margin-top:10px}
+
+/* Helpers for media-first modal content */
+.modal__media{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:8px;margin:12px 0;color:var(--color-text-secondary)}

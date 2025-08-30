@@ -19,16 +19,16 @@
     --font-size-4xl: 96px;
 
     /* Base theme: dark — refined palette */
-    --color-bg-primary: #0B0E11;          /* slightly cooler, deeper base */
-    --color-bg-secondary: #121518;        /* subtle separation */
-    --color-bg-accent: #121315;           /* panels / chips background */
-    --color-text-primary: #F5F7FA;        /* crisper white */
-    --color-text-secondary: #C9D1D9;      /* premium dim */
-    --color-text-muted: #8B949E;          /* elegant muted */
-    --color-border: #2A2F36;              /* refined border */
-    --color-border-hover: #3A424B;        /* hover border */
-    --color-accent: #E0495A;              /* richer accent */
-    --color-accent-hover: #F05C6C;        /* accent hover */
+    --color-bg-primary: #0B0E11;         
+    --color-bg-secondary: #121518;        
+    --color-bg-accent: #121315;           
+    --color-text-primary: #F5F7FA;        
+    --color-text-secondary: #C9D1D9;      
+    --color-text-muted: #8B949E;          
+    --color-border: #2A2F36;              
+    --color-border-hover: #3A424B;        
+    --color-accent: #E0495A;              
+    --color-accent-hover: #F05C6C;        
 
     /* Compatibility tokens */
     --color-primary: var(--color-accent);

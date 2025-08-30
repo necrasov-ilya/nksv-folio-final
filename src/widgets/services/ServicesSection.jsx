@@ -5,6 +5,8 @@ import web_make from './media/web_make.png';
 import u_xui from './media/u_xui.png';
 import tech_consult from './media/tech_consult.png';
 import { useState } from 'react';
+import Modal from '../../shared/ui/Modal/Modal';
+import placeholderImg from '../skillsGallery/media/placeholder-large.png';
 import './ServicesSection.css';
 
 
@@ -36,16 +38,24 @@ const defaultCards = [
 ];
 
 const ServicesSection = ({ id = 'services', cards = defaultCards }) => {
-  const [modal, setModal] = useState(null);
+  const [modalId, setModalId] = useState(null);
+
+  const activeCard = modalId !== null ? cards.find(x => x.id === modalId) : null;
 
   return (
     <section id={id} className="section">
       <Container size="xl">
         <h2 className="section-title">Чем я могу вам помочь?</h2>
         <div className="services-grid">
-          {cards.map((c, idx) => (
+          {cards.map((c) => (
             <article key={c.id} className="service-card" tabIndex={0}>
-              <img src={c.img} alt="Пример" loading="lazy" decoding="async" />
+              <img
+                src={c.img || placeholderImg}
+                alt={c.title || 'Пример'}
+                loading="lazy"
+                decoding="async"
+                onError={(e) => { if (e.currentTarget.src !== placeholderImg) e.currentTarget.src = placeholderImg; }}
+              />
               <div className="service-card__body">
                 <h3>{c.title}</h3>
                 <p className="service-card__benefit">{c.benefit}</p>
@@ -58,22 +68,34 @@ const ServicesSection = ({ id = 'services', cards = defaultCards }) => {
                   variant="secondary"
                   size="small"
                   style={{ marginTop: 12, minWidth: 110 }}
-                  onClick={() => setModal(idx)}
+                  onClick={() => setModalId(c.id)}
                 >Подробнее</Button>
               </div>
             </article>
           ))}
         </div>
 
-        {modal !== null && (
-          <div className="service-modal" onClick={() => setModal(null)}>
-            <div className="service-modal__dialog" onClick={e => e.stopPropagation()}>
-              <button className="service-modal__close" onClick={() => setModal(null)} aria-label="Закрыть">×</button>
-              <h3>{cards[modal].title}</h3>
-              <p>{cards[modal].details}</p>
-            </div>
-          </div>
-        )}
+        <Modal open={modalId !== null} onClose={() => setModalId(null)}>
+          {activeCard && (
+            <>
+              <img
+                className="modal__media"
+                src={activeCard.img || placeholderImg}
+                alt={activeCard.title ? `${activeCard.title} — иллюстрация` : 'Иллюстрация'}
+                loading="eager"
+                decoding="async"
+                onError={(e) => { if (e.currentTarget.src !== placeholderImg) e.currentTarget.src = placeholderImg; }}
+              />
+              <div className="modal__body">
+                <h3>{activeCard.title}</h3>
+                <p className="muted" style={{ marginTop: 8 }}>{activeCard.details}</p>
+                <div className="modal__actions">
+                  <Button onClick={() => setModalId(null)} size="small">Понятно</Button>
+                </div>
+              </div>
+            </>
+          )}
+        </Modal>
       </Container>
     </section>
   );
