@@ -92,3 +92,41 @@
     --font-size-2xl: 2rem;   
   }
 }
+
+/* Section title — minimalist accent */
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 var(--spacing-xl);
+  padding-left: 14px;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
+  line-height: 1.2;
+  letter-spacing: .01em;
+  color: var(--color-text-primary);
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.1em;
+  border-radius: 4px;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--color-accent) 28%, transparent);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 36px;
+    padding-left: 12px;
+  }
+  .section-title::before {
+    width: 3px;
+    height: 1.05em;
+  }
+}
