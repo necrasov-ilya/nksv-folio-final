@@ -9,7 +9,7 @@
 }
 
 /* Адаптация для мобильных устройств */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .home-page__main {
     padding-top: 70px;
   }

@@ -59,13 +59,13 @@
     --border-radius-xl: 32px;
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px rgba(0,0,0,.25), 0 0 0 1px rgba(255,255,255,.06) inset;
-    --shadow-md: 0 0 0 1px rgba(255,255,255,.07), 0 14px 28px rgba(0,0,0,.38);
-    --shadow-lg: 0 22px 44px rgba(0,0,0,.48);
-    --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.25);
-    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.35);
-    --shadow-heavy: 0 15px 35px rgba(0, 0, 0, 0.55);
-    --shadow-primary: 0 10px 28px color-mix(in oklab, var(--color-accent) 35%, rgba(0,0,0,.0));
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.20), 0 0 0 1px rgba(255,255,255,.05) inset;
+    --shadow-md: 0 0 0 1px rgba(255,255,255,.04), 0 8px 16px rgba(0,0,0,.22), 0 16px 32px rgba(0,0,0,.18);
+    --shadow-lg: 0 1px 1px rgba(0,0,0,.16), 0 12px 24px rgba(0,0,0,.24), 0 24px 48px rgba(0,0,0,.20);
+    --shadow-light: 0 4px 16px rgba(0, 0, 0, 0.18);
+    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.25);
+    --shadow-heavy: 0 14px 36px rgba(0, 0, 0, 0.40);
+    --shadow-primary: 0 4px 12px color-mix(in oklab, var(--color-accent) 22%, transparent), 0 8px 18px color-mix(in oklab, var(--color-accent) 14%, transparent);
 
     /* Transitions */
     --transition-fast: 120ms cubic-bezier(.22,.61,.36,1);
@@ -119,7 +119,6 @@
     --header-backdrop-bg-scrolled: rgba(10, 12, 14, .6);
 }
 
-/* Light theme overrides */
 [data-theme="light"] {
     --color-bg-primary: #F6F7F9;
     --color-bg-secondary: #FFFFFF;
