@@ -8,14 +8,6 @@
   padding-top: 30px; 
 }
 
-.home-page__section {
-  padding: var(--spacing-3xl) 0;
-  position: relative;
-}
-
-.home-page__section:nth-child(even) {
-  background-color: var(--color-bg-secondary);
-}
 
 /* Адаптация для мобильных устройств */
 @media (max-width: 767px) {

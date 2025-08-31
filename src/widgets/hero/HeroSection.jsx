@@ -18,7 +18,7 @@ const HeroSection = ({
   ctaSecondaryHref = '#portfolio',
 }) => {
   return (
-  <section className="section section--expanded hero">
+  <section className="section section--expanded hero" id="hero">
       <Container size="xl" bleed>
         <div className="hero__inner">
           <div className="hero__content" aria-live="polite">

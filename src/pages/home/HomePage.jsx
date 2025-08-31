@@ -1,4 +1,5 @@
 import Container from "../../shared/ui/Container/Container";
+import Reveal from "../../shared/ui/Reveal/Reveal";
 import Header from "../../widgets/header/Header";
 import HeroSection from "../../widgets/hero/HeroSection";
 import AboutSection from "../../widgets/about/AboutSection";
@@ -15,13 +16,27 @@ const HomePage = () => {
     <div className="home-page" id="top">
             <Header />
             <main className="home-page__main">
-                <HeroSection />
-                <AboutSection />
-                <SkillsGallery />
-                <ServicesSection />
-                <PortfolioSection />
-                <ProjectsSection />
-                <FaqSection />
+                <Reveal variant="hero">
+                    <HeroSection />
+                </Reveal>
+                <Reveal variant="fade-up">
+                    <AboutSection />
+                </Reveal>
+                <Reveal variant="fade-up">
+                    <SkillsGallery />
+                </Reveal>
+                <Reveal variant="fade-up">
+                    <ServicesSection />
+                </Reveal>
+                <Reveal variant="fade-up">
+                    <PortfolioSection />
+                </Reveal>
+                <Reveal variant="fade-up">
+                    <ProjectsSection />
+                </Reveal>
+                <Reveal variant="fade-up">
+                    <FaqSection />
+                </Reveal>
             </main>
             <Footer />
         </div>
