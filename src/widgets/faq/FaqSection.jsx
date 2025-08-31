@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import faqPlaceholder from './assets/faq-placeholder.png';
 import Container from '../../shared/ui/Container/Container';
 import './FaqSection.css';
 
@@ -53,10 +54,15 @@ const FaqSection = ({ id = 'faq', items = defaultItems }) => {
     <section id={id} className="section">
       <Container size="xl">
         <h2 className="section-title">FAQ</h2>
-        <div className="faq">
-          {items.map((it, idx) => (
-            <FaqItem key={it.q} {...it} isOpen={open === idx} onToggle={() => setOpen(open === idx ? -1 : idx)} />
-          ))}
+        <div className="faq-layout">
+          <div className="faq">
+            {items.map((it, idx) => (
+              <FaqItem key={it.q} {...it} isOpen={open === idx} onToggle={() => setOpen(open === idx ? -1 : idx)} />
+            ))}
+          </div>
+          <div className="faq-layout__media" aria-hidden>
+            <img className="faq-layout__img" src={faqPlaceholder} alt="" loading="lazy" decoding="async" />
+          </div>
         </div>
       </Container>
     </section>
