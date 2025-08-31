@@ -80,6 +80,7 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
                 variant="primary"
                 size="small"
                 className="header__cta"
+                aria-label="Связаться со мной"
               >
                 <img className="header__cta-icon" src={tgIcon} alt="" aria-hidden />
                 <span>Связаться со мной</span>

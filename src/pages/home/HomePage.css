@@ -8,7 +8,6 @@
   padding-top: 30px; 
 }
 
-
 /* Адаптация для мобильных устройств */
 @media (max-width: 767px) {
   .home-page__main {

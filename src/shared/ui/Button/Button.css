@@ -54,11 +54,11 @@
 
 /* Размеры кнопок */
 .button--small {
-  padding: 0 var(--spacing-md);
+  padding: 6px var(--spacing-md);
   font-size: var(--font-size-sm);
   gap: var(--spacing-xs);
-  height: 36px;
-  line-height: 36px;
+  min-height: 36px;
+  line-height: 1.2;
 }
 
 .button--medium {
