@@ -46,7 +46,7 @@
 .logo__image {
     display: inline-block;
     width: auto;
-    height: 38px;
+    height: var(--header-logo-height)
 }
 
 .header__cta {
@@ -54,6 +54,7 @@
 }
 
 .logo__text {
+    font-size: var(--font-size-xlg);
     font-variation-settings: 'wght' 700;
 }
 
