@@ -5,8 +5,7 @@ import HeroSection from "../../widgets/hero/HeroSection";
 import AboutSection from "../../widgets/about/AboutSection";
 import ServicesSection from "../../widgets/services/ServicesSection";
 import SkillsGallery from "../../widgets/skillsGallery/SkillsGallery";
-import PortfolioSection from "../../widgets/portfolio/PortfolioSection";
-import ProjectsSection from "../../widgets/projects/ProjectsSection";
+import PortfolioUnified from "../../widgets/portfolio/PortfolioUnified";
 import FaqSection from "../../widgets/faq/FaqSection";
 import Footer from "../../widgets/footer/Footer";
 import "./HomePage.css";
@@ -29,10 +28,7 @@ const HomePage = () => {
                     <ServicesSection />
                 </Reveal>
                 <Reveal variant="fade-up">
-                    <PortfolioSection />
-                </Reveal>
-                <Reveal variant="fade-up">
-                    <ProjectsSection />
+                    <PortfolioUnified />
                 </Reveal>
                 <Reveal variant="fade-up">
                     <FaqSection />

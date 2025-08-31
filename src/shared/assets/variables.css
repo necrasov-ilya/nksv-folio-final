@@ -95,6 +95,8 @@
     --section-padding-top-expanded: 5px;   
     --section-padding-bottom-expanded: 10px;
 
+        --featured-max-height: 520px; /* compact height (about -200px vs earlier look) */
+
         --header-logo-height: 45px;
         --header-height: 72px;
         --mobile-button-size: 64px;

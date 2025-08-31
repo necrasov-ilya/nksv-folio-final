@@ -17,8 +17,7 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
         { href: '#about', label: 'Обо мне' },
         { href: '#skills', label: 'Навыки' },
         { href: '#services', label: 'Услуги' },
-        { href: '#portfolio', label: 'Портфолио' },
-        { href: '#projects', label: 'Проекты' },
+  { href: '#portfolio', label: 'Портфолио' },
         { href: '#faq', label: 'FAQ' },
       ];
 

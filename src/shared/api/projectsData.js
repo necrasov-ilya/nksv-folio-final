@@ -9,6 +9,7 @@ export const projectsData = [
     image: "/images/projects/ecommerce.jpg",
     status: "completed",
     year: 2024,
+    isFeatured: true,
     link: "https://example.com",
     github: "https://github.com/user/project"
   },
@@ -21,6 +22,7 @@ export const projectsData = [
     image: "/images/projects/design-system.jpg",
     status: "completed",
     year: 2024,
+    isFeatured: true,
     link: "https://example.com"
   },
   {
@@ -32,6 +34,7 @@ export const projectsData = [
     image: "/images/projects/fitness-app.jpg",
     status: "in-progress",
     year: 2024,
+    isFeatured: false,
     github: "https://github.com/user/fitness-app"
   },
   {
@@ -43,7 +46,33 @@ export const projectsData = [
     image: "/images/projects/brand-photo.jpg",
     status: "completed",
     year: 2023,
+    isFeatured: false,
     link: "https://behance.net/project"
+  },
+  // Side projects (pet)
+  {
+    id: 's1',
+    title: 'CLI Utils',
+    description: 'Набор скриптов для рутины.',
+    category: 'side',
+    technologies: ['Node'],
+    image: '/images/projects/cli-utils.jpg',
+    status: 'wip',
+    year: 2024,
+    isFeatured: false,
+    github: 'https://github.com/user/cli-utils'
+  },
+  {
+    id: 's2',
+    title: 'Micro Animations',
+    description: 'Коллекция паттернов анимаций.',
+    category: 'side',
+    technologies: ['CSS'],
+    image: '/images/projects/micro-animations.jpg',
+    status: 'live',
+    year: 2023,
+    isFeatured: true,
+    link: 'https://example.com/micro-animations'
   }
 ];
 
@@ -64,5 +93,10 @@ export const projectCategories = [
     id: "photography",
     name: "Фотография",
     count: projectsData.filter(p => p.category === "photography").length
+  },
+  {
+    id: 'side',
+    name: 'Side projects',
+    count: projectsData.filter(p => p.category === 'side').length
   }
 ];
