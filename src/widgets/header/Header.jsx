@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useTheme } from '../../app/providers/ThemeProvider';
 import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
 import logoLight from './assets/logo-light.png';
+import logoDark from './assets/logo-dark.png';
+import darkIconBlack from '../../shared/assets/svg/toggleThemBtn/dark/dark-theme-black-btn.svg';
+import lightIconLight from '../../shared/assets/svg/toggleThemBtn/light/light-theme-light-btn.svg';
 import Container from '../../shared/ui/Container/Container';
 import Button from '../../shared/ui/Button/Button';
 import './Header.css';
@@ -44,6 +48,9 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
   }, []);
 
   const hasActive = active !== '#top';
+  const { theme, toggleTheme } = useTheme();
+  const logoSrc = theme === 'light' ? logoDark : logoLight;
+  const themeIcon = theme === 'light' ? darkIconBlack : lightIconLight;
   return (
     <header className={`header ${scrolled ? 'is-scrolled' : ''} ${hasActive ? 'has-active' : ''}`}>
       <div className="backdrop" aria-hidden="true" />
@@ -51,7 +58,7 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
         <Container size="xl" bleed>
           <div className="row">
             <a className="logo" href="#top" aria-label="Главная">
-              <img className="logo__image" src={logoLight} alt="logo" width="28" height="28" />
+              <img className="logo__image" src={logoSrc} alt="logo" width="28" height="28" />
               <span className="logo__text">NKSV</span>
             </a>
 
@@ -64,6 +71,10 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
             </nav>
 
             <div className="actions">
+              <button type="button" className="theme-toggle" onClick={toggleTheme} aria-label="Сменить тему">
+                <img className="theme-toggle__icon" src={themeIcon} alt="" aria-hidden />
+                <span className="theme-toggle__label">{theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}</span>
+              </button>
               <Button
                 href={ctaHref}
                 target="_blank"
