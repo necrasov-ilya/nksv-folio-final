@@ -73,7 +73,6 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
             <div className="actions">
               <button type="button" className="theme-toggle" onClick={toggleTheme} aria-label="Сменить тему">
                 <img className="theme-toggle__icon" src={themeIcon} alt="" aria-hidden />
-                <span className="theme-toggle__label">{theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}</span>
               </button>
               <Button
                 href={ctaHref}
