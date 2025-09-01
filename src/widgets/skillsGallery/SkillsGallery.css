@@ -6,11 +6,6 @@
   margin-bottom: 16px
 }
 
-.skills-gallery__title {
-  font-size: var(--font-size-xl);
-  color: var(--color-text-secondary)
-}
-
 .skills-gallery__grid {
   display: grid;
   grid-template-columns: 1fr 2fr;

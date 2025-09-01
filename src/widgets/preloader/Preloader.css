@@ -16,9 +16,10 @@
   overflow: hidden;
 }
 
+/* Keep container presence during handoff; we'll remove node after JS completes */
 .preloader--hidden {
   opacity: 0;
-  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Видео фон */

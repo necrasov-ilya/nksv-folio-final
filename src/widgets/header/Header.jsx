@@ -57,6 +57,7 @@ const Header = ({ ctaHref = 'https://t.me/nksv_ilya', links = [] }) => {
         <Container size="xl" bleed>
           <div className="row">
             <a className="logo" href="#top" aria-label="Главная">
+              {/* .logo__image is used as handoff target */}
               <img className="logo__image" src={logoSrc} alt="logo" width="28" height="28" />
               <span className="logo__text">NKSV</span>
             </a>

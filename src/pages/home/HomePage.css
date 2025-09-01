@@ -11,7 +11,7 @@
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
   .home-page__main {
-    padding-top: 70px;
+    padding-top: 20px;
   }
 
   .home-page__section {

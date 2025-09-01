@@ -17,8 +17,9 @@ function App() {
 
   return (
     <ThemeProvider>
+      {/* Always render the app; overlay preloader on top so header exists for handoff */}
+      <HomePage aria-hidden={isLoading ? true : undefined} />
       {isLoading && <Preloader onComplete={handleLoadingComplete} />}
-      {!isLoading && <HomePage />}
     </ThemeProvider>
   );
 }

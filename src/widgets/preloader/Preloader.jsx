@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './Preloader.css';
+import { logoHandoff } from '../../shared/lib/logoHandoff';
 
 const Preloader = ({ onComplete }) => {
   const [isAnimating, setIsAnimating] = useState(true);
   const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    // Mark document as preloading to hide header logo underneath
+    document.documentElement.classList.add('is-preloading');
+    return () => {
+      document.documentElement.classList.remove('is-preloading');
+    };
+  }, []);
 
   useEffect(() => {
 
@@ -11,9 +20,11 @@ const Preloader = ({ onComplete }) => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => {
-            setIsAnimating(false);
-            setTimeout(onComplete, 300);
+          setTimeout(async () => {
+            // Ensure logo draw is done before handoff
+            await new Promise(r => setTimeout(r, 150));
+            await logoHandoff();
+            onComplete?.();
           }, 500);
           return 100;
         }

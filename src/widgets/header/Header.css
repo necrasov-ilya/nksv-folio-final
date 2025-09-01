@@ -46,7 +46,13 @@
 .logo__image {
     display: inline-block;
     width: auto;
-    height: var(--header-logo-height)
+    height: var(--header-logo-height);
+    transition: opacity var(--transition-fast);
+}
+
+/* Hide header logo while preloader is active to avoid layering during handoff */
+.is-preloading .logo__image {
+    opacity: 0;
 }
 
 .header__cta {

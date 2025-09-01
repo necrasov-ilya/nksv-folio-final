@@ -52,6 +52,17 @@
     flex-wrap: wrap
 }
 
+/* Hero CTA uses shared Button with header-like hover effects */
+.hero__cta .hero__cta-icon {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.hero__cta:hover .hero__cta-icon {
+    filter: brightness(0) saturate(100%) invert(0%);
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -78,12 +89,19 @@
     background: transparent;
     color: var(--color-text-primary);
     border: 1px solid var(--color-border);
-    transition: background var(--transition-fast), border-color var(--transition-fast)
+    transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast)
 }
 
 .btn--secondary:hover {
-    background: rgba(255, 255, 255, .04);
-    border-color: var(--color-border-hover)
+    background: rgba(255, 255, 255, .08);
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1)
+}
+
+.btn--secondary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1)
 }
 
 .hero__visual {
