@@ -31,7 +31,7 @@
     border: 1px solid var(--color-border);
     border-radius: 16px;
     overflow: hidden;
-    transition: border var(--transition-fast), box-shadow 260ms cubic-bezier(.2,.9,.2,1);
+    transition: border var(--transition-fast);
 }
 
 .faq-item:hover {
@@ -55,7 +55,7 @@
 .faq-item__icon {
     display: inline-block;
     transform: rotate(0);
-    transition: transform 260ms cubic-bezier(.2,.9,.2,1);
+    transition: transform var(--transition-normal)
 }
 
 .faq-item.is-open .faq-item__icon {
@@ -65,14 +65,14 @@
 .faq-item__a {
     padding: 0 18px;
     color: var(--color-text-secondary);
-    overflow: hidden;
-    transition: height 420ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease, padding-top 260ms ease, padding-bottom 260ms ease;
-    height: 0;
+    max-height: 0;
     opacity: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal), opacity var(--transition-fast), padding-top var(--transition-fast), padding-bottom var(--transition-fast)
 }
 
 .faq-item.is-open .faq-item__a {
-    /* when JS sets height to auto after transition, this keeps layout correct */
+    max-height: 400px;
     opacity: 1;
     padding-top: 4px;
     padding-bottom: 16px
