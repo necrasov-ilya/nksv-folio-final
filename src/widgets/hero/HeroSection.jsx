@@ -1,6 +1,7 @@
 import Container from '../../shared/ui/Container/Container';
 import './HeroSection.css';
 import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
+import Button from '../../shared/ui/Button/Button';
 import heroPortrait from './media/nksv-portrait.png';
 import mobileHeroPortrait from './media/nksv-portrait-mobile.png';
 
@@ -26,10 +27,17 @@ const HeroSection = ({
             <h1 className="hero__title">{title}</h1>
             <p className="hero__subtitle">{subtitle}</p>
             <div className="hero__actions">
-              <a className="btn btn--primary" href={ctaPrimaryHref} target="_blank" rel="noreferrer">
-                <img className="btn__icon" src={tgIcon} alt="" aria-hidden />
-                <span className="btn__label">Telegram</span>
-              </a>
+              <Button
+                href={ctaPrimaryHref}
+                target="_blank"
+                variant="primary"
+                size="large"
+                className="hero__cta"
+                aria-label="Связаться со мной"
+              >
+                <img className="hero__cta-icon" src={tgIcon} alt="" aria-hidden />
+                <span>Связаться со мной</span>
+              </Button>
               <a className="btn btn--secondary" href={ctaSecondaryHref}>Смотреть работы</a>
             </div>
           </div>

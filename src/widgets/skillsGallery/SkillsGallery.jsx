@@ -43,7 +43,7 @@ const SkillsGallery = () => {
     <section id="skills" className="section skills-gallery">
       <Container size="large">
         <header className="skills-gallery__head">
-          <h2 className="skills-gallery__title">Что я умею?</h2>
+          <h2 className="section-title">Что я умею?</h2>
         </header>
         <div className="skills-gallery__grid">
           {skills.map((skill, idx) => (
