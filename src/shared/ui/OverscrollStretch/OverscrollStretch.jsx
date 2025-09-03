@@ -3,12 +3,17 @@ import './OverscrollStretch.css';
 
 const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
-function isAtBottom() {
+function atDocumentBottom() {
   const doc = document.documentElement;
-  const scrollY = window.scrollY || doc.scrollTop;
-  const innerH = window.innerHeight;
-  const scrollH = doc.scrollHeight;
-  return scrollY + innerH >= scrollH - 1; // allow tiny rounding errors
+  const gap = doc.scrollHeight - (window.scrollY + window.innerHeight);
+  return gap <= 0.5; // строгая проверка низа
+}
+
+function footerTouchesViewport() {
+  const footer = document.getElementById('footer');
+  if (!footer) return false;
+  const r = footer.getBoundingClientRect();
+  return r.top < window.innerHeight && r.bottom <= window.innerHeight + 2;
 }
 
 export default function OverscrollStretch({ maxBoost = 1.25 }) {
@@ -20,10 +25,12 @@ export default function OverscrollStretch({ maxBoost = 1.25 }) {
     state.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (state.reduce) return;
 
+    const canEngage = () => atDocumentBottom() && footerTouchesViewport();
+
     const onWheel = (e) => {
-      if (!isAtBottom()) return;
+      if (!canEngage()) return;
       if (e.deltaY > 0) {
-        state.target = clamp(state.target + e.deltaY * 0.0025, 0, maxBoost);
+        state.target = clamp(state.target + e.deltaY * 0.002, 0, maxBoost);
       }
     };
 
@@ -34,7 +41,7 @@ export default function OverscrollStretch({ maxBoost = 1.25 }) {
     };
 
     const onTouchMove = (e) => {
-      if (!isAtBottom() || state.touchStartY == null) return;
+      if (!canEngage() || state.touchStartY == null) return;
       const y = e.touches[0].clientY;
       const dy = state.touchStartY - y; // positive when swiping up (trying to scroll further down)
       if (dy > 0) {
@@ -55,10 +62,10 @@ export default function OverscrollStretch({ maxBoost = 1.25 }) {
       if (state.value < 0.001) state.value = 0;
 
       // Apply visualisation
+      const engaged = canEngage();
       const k = clamp(state.value, 0, maxBoost);
-      // Scale the blob and adjust opacity smoothly
       el.style.setProperty('--os-k', String(k));
-      el.style.opacity = String(clamp(k * 0.9, 0, 1));
+      el.style.opacity = engaged ? String(clamp(k * 0.9, 0, 1)) : '0';
 
       state.raf = requestAnimationFrame(animate);
     };
