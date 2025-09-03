@@ -2,6 +2,7 @@ import Container from '../../shared/ui/Container/Container';
 import tgIcon from '../../shared/assets/svg/social/telegram-logo-light.svg';
 import Button from '../../shared/ui/Button/Button';
 import './Footer.css';
+import OverscrollStretch from '../../shared/ui/OverscrollStretch/OverscrollStretch';
 
 const Footer = ({
   id = 'footer',
@@ -21,7 +22,7 @@ const Footer = ({
   ];
 
   return (
-    <footer id={id} role="contentinfo" className="footer section">
+  <footer id={id} role="contentinfo" className="footer section">
       <Container size="xl">
         <div className="footer__panel">
           <div className="footer__brand-block">
@@ -49,6 +50,7 @@ const Footer = ({
           <a className="footer__top" href="#top" aria-label="Back to top">Наверх ↑</a>
         </div>
       </Container>
+  <OverscrollStretch />
     </footer>
   );
 };
